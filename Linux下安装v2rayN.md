@@ -23,12 +23,12 @@ wget https://github.com/super1024201/v2ray_sh_copy/blob/main/install-release.sh 
 3.安装v2rayN
 ```
 # 如果本机无法连接github手工进行安装,要安装v2rayN机器一般是无法连接的  
-
+https://github.com/v2fly/v2ray-core/releases下载地址
 sh install-release.sh -l ./v2ray-linux-64.zip 
 
 # 安装完毕后,需要v2ray账户才可以使用,请配置/usr/local/etc/v2ray/config.json
 建议在window上面配置好,直接导出配置文件进行覆盖,文件是通用的
-
+启动systemctl  start  v2ray.service 
 ```
 4. 安装 proxychains
 ```
