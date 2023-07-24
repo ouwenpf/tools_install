@@ -10,15 +10,15 @@ yum install -y unzip zip openssl
 ```
 2.下载安装脚本
 
-```
+```sh
 # 官方脚本
-wget https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh  --user-agent="Mozilla/5.0"
+wget https://github.com/v2fly/fhs-install-v2ray/blob/master/install-release.sh  --user-agent="Mozilla/5.0"
 
 # 备用，与官方脚本一致
-wget https://github.com/super1024201/v2ray_sh_copy/blob/main/install-release.sh --user-agent="Mozilla/5.0"
+wget https://github.com/v2fly/fhs-install-v2ray/blob/master/install-release.sh --user-agent="Mozilla/5.0"
 
 # 下载v2ray-linux-64.zip 
-
+https://github.com/v2fly/v2ray-core/releases
 ```
 3.安装v2rayN
 ```
