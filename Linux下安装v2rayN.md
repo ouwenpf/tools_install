@@ -30,7 +30,7 @@ sh install-release.sh -l ./v2ray-linux-64.zip
 建议在window上面配置好,直接导出配置文件进行覆盖,文件是通用的
 启动systemctl  start  v2ray.service 
 ```
-4. 安装 proxychains
+4.安装 proxychains
 ```
 # 需要epel源
 yum install -y proxychains-ng
@@ -41,4 +41,25 @@ vim /etc/proxychains.conf
 # 测试
 proxychains curl -i www.google.com 或者  curl --socks5 127.0.0.1:10808 https://www.google.com
 
+```
+
+5.配置curl、wget等命令使用代理  
+```sh
+#创建文件"/etc/profile.d/setproxy.sh	，在文件结束位置增加如下内容：
+
+# set proxy
+function setproxy() {
+    export http_proxy=socks5://127.0.0.1:10808
+    export https_proxy=socks5://127.0.0.1:10808
+    export ftp_proxy=socks5://127.0.0.1:10808
+    export no_proxy="172.16.x.x"
+}
+​
+# unset proxy
+function unsetproxy() {
+    unset http_proxy https_proxy ftp_proxy no_proxy
+}
+
+#在终端执行 setproxy 使代理生效
+#在终端执行 unsetproxy 使代理生效
 ```
