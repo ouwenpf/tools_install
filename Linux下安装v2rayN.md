@@ -1,5 +1,5 @@
 #安装说明
-
+官方网站:https://v2ray.com/chapter_00/install.html
 图形界面下载地址：https://github.com/2dust/v2rayN/releases  
 客户端内核下载地址：https://github.com/v2fly/v2ray-core/releases
 
