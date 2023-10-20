@@ -55,6 +55,8 @@ fpm的参数
 
 fpm -f -s dir -t rpm -n mysql-8.0.30  -v 1.0.0 --epoch 1  -d 'libaio libaio-devel'  -C    ./mysql-8.0.30-linux-glibc2.12-x86_64   --after-install /tools/mysql-8.0.30-linux-glibc2.12-x86_64/scripts/init.sh  --verbose --prefix /application/mysql-8.0.30
 
+fpm -f -s dir -t rpm -n setup_wizard -v 1.2.1 -d 'nc figlet expect dos2unix jq' -C /root/ --after-install /root/setup_wizard.sh --verbose --prefix /softwares/
+
 ```
 
 
