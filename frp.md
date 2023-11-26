@@ -73,7 +73,7 @@ token = 123456                #token
 [common]
 server_addr = x.x.x.x
 server_port = 7000
-token = 123456        #配置token必须和服务端一直
+token = 123456        #配置token必须和服务端一致
 
 [ssh]
 type = tcp
