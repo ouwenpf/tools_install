@@ -62,4 +62,19 @@ function unsetproxy() {
 
 #在终端执行 setproxy 使代理生效
 #在终端执行 unsetproxy 使代理生效
+
+
+
+# docker 下面配置https_proxy
+mkdir -p /etc/systemd/system/docker.service.d
+sudo mkdir -p /etc/systemd/system/docker.service.d
+sudo vim /etc/systemd/system/docker.service.d/https-proxy.conf
+[Service]
+Environment="HTTP_PROXY=socks5://127.0.0.1:1080"
+Environment="HTTPS_PROXY=socks5://127.0.0.1:1080"
+
+sudo systemctl daemon-reload
+sudo systemctl  restart docker.service
+
+systemctl show --property=Environment docker
 ```
