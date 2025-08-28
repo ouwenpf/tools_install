@@ -6,34 +6,64 @@
 ```sh
 客户端和服务端都可以配置systemctl启动方式
 
+sudo vim /lib/systemd/system/kunlun-65500.service
+
 [Unit]
 
-vim /etc/systemd/system/frps.service
 # 服务名称，可自定义
-Description = frp server
-After = network.target syslog.target
-Wants = network.target
+Description=fraps service
+After=network.target syslog.target
+Wants=network.target
 
 [Service]
 Type = simple
 # 启动frps的命令，需修改为您的frps的安装路径
-ExecStart = /path/to/frps -c /path/to/frps.ini
+Type=simple
+ExecStart=/home/tanyueyun/.kunlun-server/kunlun-65500 -c /home/tanyueyun/.kunlun-server/kunlun-65500.toml
+StandardOutput=append:/home/tanyueyun/.kunlun-server/kunlun-65500.log
+StandardError=append:/home/tanyueyun/.kunlun-server/kunlun-65500.log
+Restart=on-failure
 
 [Install]
 WantedBy = multi-user.target
 
 
+
+
+
+sudo vim /lib/systemd/system/kunlun-agent.service
+# 服务名称，可自定义
+[Unit]
+Description=kunlun-agent service
+After=network.target syslog.target
+Wants=network.target
+
+[Service]
+# 启动frpc的命令，需修改为您的frpc的安装路径
+Type=simple
+ExecStart=/home/tanyueyun/.kunlun-server/kunlun-agent -c /home/tanyueyun/.kunlun-server/kunlun-agent.toml
+StandardOutput=append:/home/tanyueyun/.kunlun-server/kunlun-agent.log
+StandardError=append:/home/tanyueyun/.kunlun-server/kunlun-agent.log
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+
+
 # 使用 systemd 命令，管理 frps。
 # 启动frp
-systemctl start frps
+sudo systemctl daemon-reload
+sudo systemctl  start kunlun-65500.service
+systemctl start kunlun-65500.service
 # 停止frp
-systemctl stop frps
+systemctl stop kunlun-65500.service
 # 重启frp
-systemctl restart frps
+systemctl restart kunlun-65500.service
 # 查看frp状态
-systemctl status frps
+systemctl status kunlun-65500.service
 # 配置 frps 开机自启。
-systemctl enable frps
+systemctl enable kunlun-65500.service
 ```
 
 2.SSH 访问内网机器
